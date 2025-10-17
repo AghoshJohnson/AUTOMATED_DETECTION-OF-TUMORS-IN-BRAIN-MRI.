@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Detection of Tumors in Brain MRI</title>
+    <style>
+        body {
+            background-image: url('https://uploads.onecompiler.io/42s5gdpp5/43ccxyssa/DALL%C2%B7E%202025-03-19%2020.24.50%20-%20A%20professional%20doctor%20in%20a%20white%20lab%20coat%20holding%20a%20glowing,%20futuristic%20brain%20in%20their%20hands,%20optimized%20for%20website%20use.%20The%20doctor%20has%20a%20confident%20an.webp');
+            background-size: cover; /* Cover the entire page */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            min-height: 100vh; /* Ensure the container takes full height */
+            position: relative; /* Position relative for absolute elements */
+        }
+        h1 {
+            text-align: center;
+            color: #FF9800;
+            font-size: 36px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #00BCD4;
+            font-size: 28px;
+            border-bottom: 2px solid #00BCD4;
+            padding-bottom: 5px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+        }
+        textarea {
+            resize: none;
+        }
+        #imagePreview {
+            display: none; 
+            width: 100%; 
+            max-width: 400px; /* Set a maximum width for better alignment */
+            max-height: 300px; 
+            margin: 10px auto; /* Center the image */
+            border: 2px solid #00BCD4; /* Optional: Add a border for better visibility */
+            border-radius: 5px; /* Optional: Add rounded corners */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Home Page -->
+    <div class="container" id="homePage">
+        <h1>Automation Detection of Tumors in Brain MRI</h1>
+
+        <div class="section">
+            <h2>Introduction</h2>
+            <p>
+                Brain tumors are among the most critical neurological conditions, affecting thousands of individuals worldwide. Early detection and accurate diagnosis play a vital role in effective treatment and improved patient outcomes. Traditionally, the identification of brain tumors is done through manual analysis of MRI scans by radiologists. However, this process is time-consuming, requires extensive expertise, and is prone to human error. To address these challenges, the integration of artificial intelligence (AI) in medical imaging has emerged as a powerful solution.
+
+                This project, "Automation Detection of Tumors in Brain MRI," aims to develop an AI-based system using Convolutional Neural Networks (CNNs) to automatically analyze brain MRI scans and detect tumors with high accuracy. CNNs, a type of deep learning model, are particularly effective in image processing and pattern recognition. The system will be trained on a large dataset of labeled MRI scans, allowing it to differentiate between normal and abnormal brain structures, including tumor types such as gliomas, meningiomas, and pituitary tumors.
+
+                The tumor detection process involves multiple stages, including:
+
+                Pre-processing: Enhancing MRI images by noise reduction, contrast adjustment, and normalization.
+                Feature Extraction: Identifying key patterns and structures in MRI scans.
+                Tumor Classification: Using the trained AI model to classify MRI scans as tumorous or non-tumorous.
+                By automating this process, the system aims to assist radiologists by providing faster, more reliable, and highly accurate tumor detection. This will help in reducing diagnostic delays, improving treatment planning, and making advanced medical technology accessible in remote and under-resourced areas through telemedicine platforms.
+
+                In the future, this AI-powered system can be further developed to classify tumor types, assess severity levels, and suggest possible treatment recommendations based on historical medical data. This project represents a step towards integrating AI-driven automation in healthcare, enhancing early diagnosis, and improving patient care through advanced medical imaging technologies.
+            </p>
+        </div>
+
+        <button class="btn" onclick="showPage('patientDetailsPage')">Next</button>
+    </div>
+
+    <!-- Patient Details Page -->
+    <div class="container" id="patientDetailsPage" style="display: none;">
+        <h2>Patient Details</h2>
+        <form id="patientForm">
+            <label>Patient ID:</label>
+            <input type="text" id="patientId" required placeholder="Enter Patient ID">
+
+            <label>Name (Optional for privacy):</label>
+            <input type="text" id="patientName" placeholder="Enter Patient Name">
+
+            <label>Age:</label>
+            <input type="number" id="patientAge" required placeholder="Enter Age">
+
+            <label>Gender:</label>
+            <select id="patientGender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label>Symptoms:</label>
+            <textarea id="symptoms" rows="3" placeholder="Enter Symptoms"></textarea>
+
+            <label>Scan Type:</label>
+            <input type="text" id="scanType" required placeholder="Enter Scan Type">
+        </form>
+
+        <button class="btn" onclick="showPage('brainTumorDetectionPage')">Next</button>
+    </div>
+
+    <!-- Brain Tumor Detection Page -->
+    <div class="container" id="brainTumorDetectionPage" style="display: none;">
+        <h2>Brain Tumor Detection</h2>
+        <p>Upload an image to check if it has a tumor.</p>
+        
+        <input type="file" id="fileInput" accept="image/*">
+        <br>
+        <img id="imagePreview" src="#" alt="Uploaded Image">
+        <br>
+        <button class="btn" id="predictButton">Predict</button>
+        
+        <div id="results"></div>
+
+        <!-- Generate Report Button -->
+        <button class="btn" id="generateReportButton" style="display: none;">Generate Report</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("patientDetailsPage").style.display = "none";
+            document.getElementById("brainTumorDetectionPage").style.display = "none";
+
+            // Reset patient form when opening patient details page
+            if (pageId === "patientDetailsPage") {
+                document.getElementById("patientForm").reset();
+            }
+
+            // Show the requested page
+            document.getElementById(pageId).style.display = "block";
+        }
+
+        document.getElementById("fileInput").addEventListener("change", function(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById("imagePreview");
+                output.src = reader.result;
+                output.style.display = "block";
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        let tumorResult = "";
+
+        document.getElementById("predictButton").addEventListener("click", function () {
+            var file = document.getElementById("fileInput").files[0];
+            if (!file) {
+                alert("Please select an image.");
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append("file", file);
+
+            fetch("/predict", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                tumorResult = data.prediction;
+                document.getElementById("results").innerHTML = `<h2>Prediction: ${tumorResult}</h2>`;
+                document.getElementById("generateReportButton").style.display = "block";
+            })
+            .catch(error => {
+                document.getElementById("results").innerHTML = "<p style='color: red;'>Error in prediction. Please try again.</p>";
+            });
+        });
+
+        document.getElementById("generateReportButton").addEventListener("click", function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(18);
+            doc.text("Brain Tumor Detection Report", 20, 20);
+            doc.setFontSize(12);
+
+            const patientId = document.getElementById("patientId").value;
+            const patientName = document.getElementById("patientName").value || "Anonymous";
+            const patientAge = document.getElementById("patientAge").value;
+            const patientGender = document.getElementById("patientGender").value;
+            const symptoms = document.getElementById("symptoms").value || "Not Provided";
+            const scanType = document.getElementById("scanType").value;
+
+            doc.text(`Patient ID: ${patientId}`, 20, 40);
+            doc.text(`Name: ${patientName}`, 20, 50);
+            doc.text(`Age: ${patientAge}`, 20, 60);
+            doc.text(`Gender: ${patientGender}`, 20, 70);
+            doc.text(`Symptoms: ${symptoms}`, 20, 80);
+            doc.text(`Scan Type: ${scanType}`, 20, 90);
+            doc.text(`Tumor Detection Result: ${tumorResult}`, 20, 110);
+
+            doc.save("Brain_Tumor_Report.pdf");
+        });
+    </script>
+
+</body>
+</html>
